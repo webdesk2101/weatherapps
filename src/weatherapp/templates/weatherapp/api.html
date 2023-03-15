@@ -1,0 +1,46 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+            <form method="POST">
+                {% csrf_token %}
+                <input class="form-control mx-auto w-50" type="text" name="city" id="city" placeholder="Enter city Name ....">
+                <input type="submit" class="btn btn-success btn-lg my-3" value="Submit">
+            </form>
+          </div>
+
+          {% if results %}
+
+          <table class="table w-50 mx-auto mt-5">
+              <thead>
+                  <tr>
+                      <th colspan="2" class="text-center h3">Weather of {{ results.area }}</th>
+
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <th scope="row">Area</th>
+                      <td>{{ results.area }} ({{ results.lon }}, {{ results.lat }})</td>
+                  </tr>
+                <tr>
+                    <th scope="row">Visibility </th>
+                    <td>{{ results.visibility }} meter </td>
+                </tr>
+                <tr>
+                    <th scope="row">Temperature </th>
+                    <td>{{ results.temp }}°C </td>
+                </tr>
+                <tr>
+                    <th scope="row">Feels Like </th>
+                    <td>{{ results.feels_like }}°C </td>
+                </tr>
+                <tr>
+                  <th scope="row">Humidity </th>
+                  <td>{{ results.humidity }}%</td>
+              </tr>
+            </tbody>
+          </table>
+
+          {% endif %}
+{% endblock %}
+
